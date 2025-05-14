@@ -55,7 +55,7 @@ class ProductoController extends Controller
             'imagen' => 'required',
             'descripcion' => 'required',
             'precio' => 'required|numeric',
-            'precioAnterior' => 'required|numeric',
+            'precioAnterior' => 'nullable|numeric',
             'cantidad' => 'required|integer|min:1',
             'cat_id' => 'required|exists:categorias,id',
             'user_id' => 'exists:users,id'

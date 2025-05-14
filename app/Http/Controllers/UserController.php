@@ -302,7 +302,7 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Usuario actualizado', 'user' => $user], 200);
     }
-
+ 
     public function modificarCampoUser(Request $request, $id) {
         $user = User::find($id);
 
