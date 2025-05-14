@@ -20,9 +20,9 @@ use App\Http\Controllers\CompraController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user(); // Devuelve el usuario autenticado si se ha hecho login vía Sanctum
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user(); // Devuelve el usuario autenticado si se ha hecho login vía Sanctum
+// });
 
 // RUTAS SOBRE LOS USUARIOS
 Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'getAuthenticatedUser']);
