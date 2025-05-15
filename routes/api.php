@@ -26,17 +26,9 @@ use App\Http\Controllers\CompraController;
 
 // RUTAS SOBRE LOS USUARIOS
 Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'getAuthenticatedUser']);
-Route::get('/user/All', [UserController::class, 'mostrarUser']); // Muestra todos los usuarios
-Route::get('/user/Only/{id}', [UserController::class, 'mostrarUnSoloUser']); // Muestra un solo usuario por ID
-Route::post('/user/VerifyEmail', [UserController::class, 'verificarEmail']); // Verifica si un correo ya está registrado
 Route::post('/user/Create', [UserController::class, 'crearUser']); // RUTA PARA EL REGISTER
 Route::post('/user/Login', [UserController::class, 'loginUser']); // RUTA PARA EL LOGIN
-Route::post('/user/SendCode', [UserController::class, 'enviarCode']); // Envía un código para recuperación o verificación
-Route::post('/user/VerifyCode', [UserController::class, 'verificarCode']); // Verifica el código enviado
-Route::post('/user/VerifyPassword', [UserController::class, 'verificarPassword']); // Verifica si la contraseña es correcta
-Route::post('/user/ChangePassword', [UserController::class, 'cambiarPassword']); // Cambia la contraseña del usuario
 Route::put('/user/Modify/{id}', [UserController::class, 'modificarUser']); // RUTA PARA EDITAR EL PERFIL DEL USUARIO
-Route::patch('/user/ModifyCamp/{id}', [UserController::class, 'modificarCampoUser']); // Modifica un campo específico del usuario
 Route::delete('/user/Delete/{id}', [UserController::class, 'eliminarUser']); // RUTA PARA ELIMINAR EL USUARIO / ELIMINAR LA CUENTA DE AMAZON'T
 
 // RUTAS SOBRE LAS OPINIONES
@@ -55,25 +47,22 @@ Route::get('/review/ForUser/{id}', [ValoracionController::class, 'ValoracionesPo
 Route::get('/review/Average/{id}', [ValoracionController::class, 'promedioPuntuacionProducto']); // Obtiene la puntuación promedio de un producto
 
 // RUTAS SOBRE LAS CATEGORÍAS
-Route::get('/category/All', [CategoriaController::class, 'mostrarCategory']); // Muestra todas las categorías
-Route::get('/category/Only/{id}', [CategoriaController::class, 'mostrarUnSoloCategory']); // Muestra una categoría específica por ID
-Route::post('/category/Create', [CategoriaController::class, 'crearCategory']); // Crea una nueva categoría
-Route::put('/category/Modify/{id}', [CategoriaController::class, 'modificarCategory']); // Modifica completamente una categoría
-Route::patch('/category/ModifyCamp/{id}', [CategoriaController::class, 'modificarCampoCategory']); // Modifica un campo de una categoría
-Route::delete('/category/Delete/{id}', [CategoriaController::class, 'eliminarCategory']); // Elimina una categoría por ID
+Route::get('/category/All', [CategoriaController::class, 'mostrarCategory']); // RUTA PARA MOSTRAR TODAS LAS CATEGORIAS
+Route::get('/category/Only/{id}', [CategoriaController::class, 'mostrarUnSoloCategory']); // RUTA PARA MOSTRAR UNA CATEGORIA EN ESPECIFICO
+Route::post('/category/Create', [CategoriaController::class, 'crearCategory']); // RUTA PARA CREAR UNA CATEGORIA
+Route::put('/category/Modify/{id}', [CategoriaController::class, 'modificarCategory']); // RUTA PARA MODIFICAR UNA CATEGORIA
+Route::delete('/category/Delete/{id}', [CategoriaController::class, 'eliminarCategory']); // RUTA PARA ELIMINAR UNA CATEGORIA
 
 // RUTAS SOBRE LOS PRODUCTOS
 Route::get('/product/All', [ProductoController::class, 'mostrarProduct']); // RUTA PARA MOSTRAR TODOS LOS PRODUCTOS INDISTINTAMENTE DE SU CATEGORIA
-Route::get('/product/Only/{id}', [ProductoController::class, 'mostrarUnSoloProduct']); // Muestra un producto específico
+Route::get('/product/Only/{id}', [ProductoController::class, 'mostrarUnSoloProduct']); // RUTA PARA MOSTRAR UN PRODUCTO EN ESPECÍFICO
 Route::post('/product/Create', [ProductoController::class, 'crearProduct']); // RUTA PARA CREAR UN NUEVO PRODUCTO
 Route::put('/product/Modify/{id}', [ProductoController::class, 'modificarProduct']); // RUTA PARA MODIFICAR UN PRODUCTO
-Route::patch('/product/ModifyCamp/{id}', [ProductoController::class, 'modificarCampoProduct']); // Modifica un campo específico de un producto
 Route::delete('/product/Delete/{id}', [ProductoController::class, 'eliminarProduct']); // RUTA PARA ELIMINAR EL PRODUCTO
 Route::get('/product/ProdForCat', [ProductoController::class, 'productPorCategoria']); // RUTA PARA MOSTRAR TODOS LOS PRODUCTOS AGRUPADOS POR CATEGORIAS
 Route::get('/product/ProdSale', [ProductoController::class, 'productPorOferta']); // Obtiene productos en oferta
 Route::get('/product/ProdNotSale', [ProductoController::class, 'productSinOferta']); // Obtiene productos que no están en oferta
 Route::get('/product/ProdForOnlyCat/{id}', [ProductoController::class, 'productPorUnaCategoria']); // RUTA PARA OBTENER LOS PRODUCTOS DE UNA CATEGOORIA EN ESPECÍFICO
-Route::get('/product/My/{id}', [ProductoController::class, 'miProduct']); // Obtiene productos que pertenecen a un usuario específico
 
 // RUTAS SOBRE EL CARRITO
 Route::get('/cart/My/{id}', [CarritoController::class, 'mostrarCart']); // RUTA PARA MOSTRARLE AL USUARIO SU CARRITO
@@ -86,9 +75,6 @@ Route::post('/cart/Confirm/{id}', [CarritoController::class, 'confirmarCompra'])
 
 // RUTAS SOBRE LAS COMPRAS
 Route::get('/shop/Buy/{id}', [CompraController::class, 'mostrarCompra']); // RUTA PARA EL HISTORIAL DE PEDIDOS EN EL USER-PROFILE
-Route::get('/shop/Sell/{id}', [CompraController::class, 'mostrarVentas']); // Muestra las ventas realizadas por un usuario (si es vendedor)
-Route::get('/shop/TotalBuy/{id}', [CompraController::class, 'totalCompra']); // Obtiene el total gastado por un usuario en compras
-Route::get('/shop/TotalSell/{id}', [CompraController::class, 'totalVenta']); // Obtiene el total ganado por un usuario en ventas
 
 // Ruta de prueba para saber si la API está bien conectada o no a Angular
 Route::get('/prueba', function () {
