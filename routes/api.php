@@ -63,6 +63,8 @@ Route::get('/product/ProdForCat', [ProductoController::class, 'productPorCategor
 Route::get('/product/ProdSale', [ProductoController::class, 'productPorOferta']); // Obtiene productos en oferta
 Route::get('/product/ProdNotSale', [ProductoController::class, 'productSinOferta']); // Obtiene productos que no están en oferta
 Route::get('/product/ProdForOnlyCat/{id}', [ProductoController::class, 'productPorUnaCategoria']); // RUTA PARA OBTENER LOS PRODUCTOS DE UNA CATEGOORIA EN ESPECÍFICO
+Route::get('/product/My/{user_id}', [ProductoController::class, 'miProduct']);
+
 
 // RUTAS SOBRE EL CARRITO
 Route::get('/cart/My/{id}', [CarritoController::class, 'mostrarCart']); // RUTA PARA MOSTRARLE AL USUARIO SU CARRITO
